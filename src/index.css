@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #050811;
+    --navy-surface: #0a1122;
+    --navy-card: #0e1830;
+    --navy-border: #1e2945;
+    --accent-orange: #f97316;
+    --accent-cyan: #06b6d4;
+  }
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #050811;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-display {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+}
+
+/* Custom scrollbars for clean mission control UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080d1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Subtle grid backdrop */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+}
+
+/* Mission Control HUD Glows */
+.hud-glow-orange {
+  box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.25);
+}
+.hud-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+}
+.hud-glow-red {
+  box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.3);
+}
+
+.border-hud {
+  border-color: rgba(30, 41, 59, 0.8);
+}
+
+/* Glass panel */
+.hud-card {
+  background: linear-gradient(135deg, rgba(14, 24, 48, 0.75) 0%, rgba(10, 17, 34, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.hud-card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hud-card-hover:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15);
+}
+
+/* Radar scan animation */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+}
+
+/* Flame flicker animation */
+@keyframes flame-pulse {
+  0%, 100% { opacity: 0.95; transform: scale(1); }
+  50% { opacity: 0.82; transform: scale(0.98); }
+}
+
+.animate-flame {
+  animation: flame-pulse 2s ease-in-out infinite;
+}
+
+/* Print styles for PDF report */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
